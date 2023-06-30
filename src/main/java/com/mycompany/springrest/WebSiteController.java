@@ -27,7 +27,7 @@ public class WebSiteController {
     @RequestMapping(
             value = "/status",
             method = RequestMethod.GET,
-            produces = "application/json"
+            produces = "application/json"     
     )
     public String status() {
         return "{\"status\":\"Greetings from Spring Boot. "
@@ -38,6 +38,15 @@ public class WebSiteController {
 
     @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return String.format("Hello %s!", name);
+    }
+    
+    @RequestMapping(
+            value = "/hellopost",
+            method = RequestMethod.POST,
+            produces = "application/json"   
+    )
+    public String hellopost(@RequestParam(value = "name", defaultValue = "World") String name) {
         return String.format("Hello %s!", name);
     }
 
